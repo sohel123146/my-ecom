@@ -6,7 +6,13 @@ import { CgMenu, CgClose } from "react-icons/cg";
 
 const Navbar = () => {
   // state to hide active class
-  const [menuIcon, setMenuIcon] = useState();
+  const [menuIcon, setMenuIcon] = useState(false);
+
+  const toggleMenu = () => {
+    setMenuIcon(!menuIcon);
+  };
+
+
   const Nav = styled.nav`
     .navbar-lists {
       display: flex;
@@ -153,22 +159,22 @@ const Navbar = () => {
       <div className={menuIcon ? "navbar active" : "navbar"}>
         <ul className="navbar-lists">
           <li>
-            <NavLink to="/" className="navbar-link home-link" onClick={() => setMenuIcon(false)}>
+            <NavLink to="/" className="navbar-link home-link" onClick={toggleMenu}>
               Home
             </NavLink>
           </li>
           <li>
-            <NavLink to="/about" className="navbar-link" onClick={() => setMenuIcon(false)}>
+            <NavLink to="/about" className="navbar-link" onClick={toggleMenu}>
               About
             </NavLink>
           </li>
           <li>
-            <NavLink to="/products" className="navbar-link" onClick={() => setMenuIcon(false)}>
+            <NavLink to="/products" className="navbar-link" onClick={toggleMenu}>
               Products
             </NavLink>
           </li>
           <li>
-            <NavLink to="/contact" className="navbar-link" onClick={() => setMenuIcon(false)}>
+            <NavLink to="/contact" className="navbar-link" onClick={toggleMenu}>
               Contact
             </NavLink>
           </li>
@@ -183,11 +189,11 @@ const Navbar = () => {
         {/* mobile hamburger menu */}
 
         <div className="mobile-navbar-btn">
-          <CgMenu name="menu-outline" className="mobile-nav-icon" onClick={() => setMenuIcon(true)}/>
+          <CgMenu name="menu-outline" className="mobile-nav-icon" onClick={toggleMenu}/>
           <CgClose
             name="close-outline"
             className="mobile-nav-icon close-outline"
-            onClick={() => setMenuIcon(false)}
+            onClick={toggleMenu}
           />
         </div>
       </div>

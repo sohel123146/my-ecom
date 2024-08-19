@@ -1,10 +1,18 @@
 import React from 'react'
+import HeroSection from '../components/HeroSection';
+import Services from '../components/Services';
+import Trusted from '../components/Trusted';
 
 const About = () => {
+  const data = {
+    name:"CODECRAFTS ECOMMERCE"
+  }
   return (
-    <div>
-      i am About page
-    </div>
+    <>
+    <HeroSection MyData = { data } />
+    <Services/>
+    <Trusted/>
+    </>
   )
 }
 
