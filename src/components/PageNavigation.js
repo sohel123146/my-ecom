@@ -11,7 +11,7 @@ const PageNavigation = ({title}) => {
 }
 
 const Wrapper = styled.section`
-    height: 100rem;
+    height: 10rem;
     background-color: ${({theme}) => theme.colors.bg};
     display: flex;
     justify-content: flex-start;
