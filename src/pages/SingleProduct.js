@@ -6,10 +6,10 @@ import { useProductContext } from "../context/productcontext";
 import PageNavigation from "../components/PageNavigation";
 import MyImage from "../components/MyImage";
 import { Container } from "../styles/Container";
-import FormatPrice from "../Helpers/FormatPrice"
+import FormatPrice from "../Helpers/FormatPrice";
 import { TbReplace, TbTruckDelivery } from "react-icons/tb";
 import { MdSecurity } from "react-icons/md";
-
+import Stars from "../components/Stars";
 
 const API = `https://api.pujakaitem.com/api/products`;
 
@@ -33,7 +33,7 @@ const SingleProduct = () => {
 
   useEffect(() => {
     getSingleProduct(`${API}?id=${id}`);
-  },[]);
+  }, []);
 
   if (isSingleLoading) {
     return <div className="page_loading">Loading...</div>;
@@ -44,24 +44,23 @@ const SingleProduct = () => {
       <PageNavigation title={name} />
       <Container className="container">
         <div className="grid grid-two-column">
-
           {/* product image */}
           <div className="product_images">
             <MyImage image={image} />
           </div>
 
-          {/* product data */}  
+          {/* product data */}
           <div className="product-data">
             <h2>{name}</h2>
-            <p>{stars}</p>
-            <p>{reviews} reviews</p>
-            <p className="product-data-proce">MRP:
+            <Stars stars={stars} reviews={reviews} />
+            <p className="product-data-proce">
+              MRP:
               <del>
-                <FormatPrice price={price + 250000}/>
+                <FormatPrice price={price + 250000} />
               </del>
             </p>
             <p className="product-data-proce product-data-real-price">
-                Deal of the Day: <FormatPrice price={price}/>
+              Deal of the Day: <FormatPrice price={price} />
             </p>
             <p>{description}</p>
 
@@ -89,7 +88,8 @@ const SingleProduct = () => {
 
             <div className="product-data-info">
               <p>
-                Availavble: <span>{stock > 0 ? "In Stock" : "Out of Stock"}</span>
+                Availavble:{" "}
+                <span>{stock > 0 ? "In Stock" : "Out of Stock"}</span>
               </p>
               <p>
                 ID : <span>{prodcutId}</span>
@@ -99,7 +99,7 @@ const SingleProduct = () => {
               </p>
             </div>
           </div>
-        </div> 
+        </div>
       </Container>
     </Wrapper>
   );
@@ -130,7 +130,6 @@ const Wrapper = styled.section`
         flex-direction: column;
         justify-content: center;
         align-items: center;
-
 
         .warranty-icon {
           background-color: rgba(220, 220, 220, 0.5);

@@ -2,19 +2,17 @@ import React, { useState } from "react";
 import styled from "styled-components";
 
 const MyImage = ({ image = [{ url: " " }] }) => {
-  console.log(image);
   const [mainImage,setMainImage] = useState(image[0])
   return (
     <Wrapper>
       <div className="grid grid-four-column">
         {image.map((curElem, index) => {
           return (
-            <figure>
+            <figure key={index}>
               <img
                 src={curElem.url}
                 alt={curElem.filename}
                 className="box-image--style"
-                key={index}
                 onClick={() => setMainImage(curElem)}
               />
             </figure>
